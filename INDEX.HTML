@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Profesional Saya</title>
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4f46e5;
+        }
+
+        /* --- SECTION LAYOUT --- */
+        section {
+            padding: 100px 20px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            position: relative;
+            color: #1e293b;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #4f46e5;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- HERO / PROFIL SECTION --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            min-height: 85vh;
+            padding-top: 140px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 42px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .hero-content h1 span {
+            color: #4f46e5;
+        }
+
+        .hero-content .tagline {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-content .address {
+            font-size: 15px;
+            color: #64748b;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 90px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 8px solid white;
+        }
+
+        /* --- TIMELINE (PENDIDIKAN & PENGALAMAN) --- */
+        .timeline-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .timeline-box h3 {
+            font-size: 20px;
+            color: #1e293b;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-left: 4px solid #4f46e5;
+            transition: transform 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+
+        .timeline-date {
+            font-size: 13px;
+            font-weight: 600;
+            color: #4f46e5;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .timeline-subtitle {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        /* --- PORTFOLIO / HASIL KARYA --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .portfolio-thumb {
+            height: 200px;
+            background: #cbd5e1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: #64748b;
+            font-weight: bold;
+        }
+
+        /* Variasi warna thumbnail template */
+        .thumb-1 { background: #e0e7ff; color: #4f46e5; }
+        .thumb-2 { background: #f3e8ff; color: #a855f7; }
+        .thumb-3 { background: #dcfce7; color: #22c55e; }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h4 {
+            font-size: 18px;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-info p {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4f46e5;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #1e293b;
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 100px;
+                min-height: auto;
+            }
+            .hero-content h1 { font-size: 32px; }
+            .nav-links { display: none; } /* Menyederhanakan tampilan mobile */
+            .timeline-container { grid-template-columns: 1fr; }
+            .address { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASI -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Porto.ku</div>
+            <ul class="nav-links">
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#riwayat">Riwayat</a></li>
+                <li><a href="#karya">Hasil Karya</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECTION 1: PROFIL / HERO -->
+    <section id="profil" class="hero">
+        <div class="hero-content">
+            <h1>Halo, Saya <span>Nama Anda</span></h1>
+            <div class="tagline">Web Designer / Full-Stack Developer</div>
+            <div class="address">📍 Jl. Pangeran Jayakarta No. 45, Jakarta Barat, Indonesia</div>
+            <p style="color: #64748b; margin-bottom: 30px; font-size: 16px;">
+                Saya adalah seorang profesional yang berfokus pada pembuatan solusi digital yang fungsional, estetis, dan user-friendly. Memiliki ketertarikan besar dalam mengembangkan teknologi terbaru.
+            </p>
+            <a href="mailto:emailanda@gmail.com" class="btn">Hubungi Saya</a>
+        </div>
+        <div class="hero-image">
+            <!-- Ganti emoji di bawah dengan gambar asli menggunakan tag <img src="foto.jpg" alt="Foto"> jika ada -->
+            <div class="profile-img">🧑‍💻</div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: PENDIDIKAN & PENGALAMAN -->
+    <section id="riwayat">
+        <h2 class="section-title">Riwayat Hidup</h2>
+        <div class="timeline-container">
+            
+            <!-- Kolom Pendidikan -->
+            <div class="timeline-box">
+                <h3>Pendidikan</h3>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2024</div>
+                    <div class="timeline-title">S1 Teknik Informatika</div>
+                    <div class="timeline-subtitle">Universitas Indonesia</div>
+                    <p style="font-size: 14px; color: #64748b;">Lulus dengan IPK 3.80. Berfokus pada pengembangan aplikasi web dan kecerdasan buatan.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2017 - 2020</div>
+                    <div class="timeline-title">MIPA (Matematika & IPA)</div>
+                    <div class="timeline-subtitle">SMA Negeri 1 Jakarta</div>
+                    <p style="font-size: 14px; color: #64748b;">Aktif dalam organisasi olimpiade komputer dan klub desain grafis.</p>
+                </div>
+            </div>
+
+            <!-- Kolom Pengalaman Kerja -->
+            <div class="timeline-box">
+                <h3>Pengalaman Kerja</h3>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - Sekarang</div>
+                    <div class="timeline-title">Senior Web Developer</div>
+                    <div class="timeline-subtitle">PT. Teknologi Digital Nusantara</div>
+                    <p style="font-size: 14px; color: #64748b;">Memimpin tim beranggotakan 5 orang untuk membangun platform e-commerce dan mengoptimalkan performa web hingga 40%.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-title">Junior Frontend Developer (Magang)</div>
+                    <div class="timeline-subtitle">Startup Solusi Kreatif</div>
+                    <p style="font-size: 14px; color: #64748b;">Mengembangkan komponen UI/UX yang responsif menggunakan HTML, CSS, dan JavaScript modern.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 3: HASIL KARYA / PORTFOLIO -->
+    <section id="karya">
+        <h2 class="section-title">Hasil Karya</h2>
+        <div class="portfolio-grid">
+            
+            <!-- Karya 1 -->
+            <div class="portfolio-item">
+                <div class="portfolio-thumb thumb-1">🛒</div>
+                <div class="portfolio-info">
+                    <h4>E-Commerce Platform</h4>
+                    <p>Website toko online responsif lengkap dengan sistem keranjang belanja dan integrasi pembayaran digital.</p>
+                    <a href="#" class="portfolio-link">Lihat Project &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Karya 2 -->
+            <div class="portfolio-item">
+                <div class="portfolio-thumb thumb-2">📊</div>
+                <div class="portfolio-info">
+                    <h4>Finance Dashboard</h4>
+                    <p>Aplikasi web untuk mencatat keuangan pribadi dengan visualisasi grafik yang interaktif dan menarik.</p>
+                    <a href="#" class="portfolio-link">Lihat Project &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Karya 3 -->
+            <div class="portfolio-item">
+                <div class="portfolio-thumb thumb-3">📱</div>
+                <div class="portfolio-info">
+                    <h4>Company Profile Web</h4>
+                    <p>Desain website murni menggunakan HTML & CSS untuk kebutuhan branding perusahaan teknologi lokal.</p>
+                    <a href="#" class="portfolio-link">Lihat Project &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Nama Anda. Dibuat dengan penuh semangat.</p>
+    </footer>
+
+</body>
+</html>
